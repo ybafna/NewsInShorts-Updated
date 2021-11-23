@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>NewsInShorts</title>
+</head>
+<style>
+    ul {
+        column-count: 4;
+        column-gap: 20px;
+        -moz-column-count: 4;
+        -moz-column-gap: 20px;
+        -webkit-column-gap: 20px;
+        -webkit-column-count: 4;
+    }
+</style>
+{% load static %}
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">NewsInShorts</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'trending' %}">Trending</a>
+      </li>
+    </ul>
+  </div>
+      <form class="form-inline" action="{% url 'search' %}" method="post">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" placeholder="Search here.." aria-label="Search" name="keyword">
+        <button class="btn btn-outline-inverse my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<br>
+<div class="container">
+<div style ="text-align: center; font-family: Roboto, Lucida Grande, Verdana, Arial, sans-serif; font-size: xx-large"> CATEGORY </div>
+<br>
+<div class="row" style="font-family:Apple Chancery, Cursive">
+    <div class = "container-fluid" style="text-align: center">
+        <div class = "col-sm-2" style="float:left; height: 150px">
+            <a style = "color:black;" href = "{% url 'general' %}">
+                  <img src="./../../static/getNews/images/general.jpg" style="width: 100%; min-height: 100%">
+                <h6>General</h6>
+            </a>
+        </div>
+        <div class = "col-sm-2" style="float:left; height: 150px">
+            <a style = "color:black" href = "{% url 'business' %}">
+
+                <img src="./../../static/getNews/images/business.jpg" style="width: 100%; min-height: 100%">
+                <h6 >Business</h6>
+            </a>
+        </div>
+        <div class = "col-sm-2" style="float:left; height: 150px">
+            <a style = "color:black" href = "{% url 'entertainment' %}">
+                  <img src="./../../static/getNews/images/entertainment.jpg" style="width: 100%; min-height: 100%">
+                <h6>Entertainment</h6>
+            </a>
+        </div>
+        <div class = "col-sm-2" style="float:left; height: 150px">
+            <a style = "color:black" href = "{% url 'sport' %}">
+                  <img src="./../../static/getNews/images/sport.jpg" style="width: 100%; min-height: 100%">
+                <h6>Sports</h6>
+            </a>
+        </div>
+        <div class = "col-sm-2" style="float:left; height: 150px">
+            <a style = "color:black" href = "{% url 'science-nature' %}">
+                  <img src="./../../static/getNews/images/science_and_nature.jpg" style="width: 100%; min-height: 100%">
+                <h6>Science-and-nature</h6>
+            </a>
+        </div>
+        <div class = "col-sm-2" style="float:left; height: 150px">
+            <a style = "color:black" href = "{% url 'technology' %}">
+                <img src="./../../static/getNews/images/technology.jpg" style="width: 100%; min-height: 100%">
+                <h6>Technology</h6>
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<hr>
+
+<div style ="text-align: center; font-family: Roboto, Lucida Grande, Verdana, Arial, sans-serif; font-size: xx-large"> NEWSPAPERS & MAGAZINES </div>
+<br>
+<div class="row">
+    <div class = "container-fluid">
+        <div style="font-family: Apple Chancery, Cursive; font-size: large;">
+            <ul class="list-group list-group" style="display: block">
+                {% for newsSource in allSource %}
+                <li class="list-group-item">
+                    <a class="source" style="color: black" href="{% url 'paper' newsSource.id %}"> {{ newsSource.name }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+<br>
+<br>
+</body>
+<footer class="page-footer font-small bg-danger">
+  <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright:
+    <a href="https://google.com/" style="color:white;"> ByteCoders</a>
+  </div>
+</footer>
+</html>

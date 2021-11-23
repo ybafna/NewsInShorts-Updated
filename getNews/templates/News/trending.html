@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <a class="navbar-brand" href="{%  url 'index' %}">NewsInShorts</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'trending' %}#general">General <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'trending' %}#business">Business</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'trending' %}#sports">Sports</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'trending' %}#entertainment">Entertainment</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'trending' %}#science-and-nature">Science And Nature</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'trending' %}#technology">Technology</a>
+      </li>
+    </ul>
+  </div>
+    <form class="form-inline" action="{% url 'search' %}" method="post">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Search here.." aria-label="Search" name="keyword">
+    <button class="btn btn-outline-inverse my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+
+<div class="container">
+    {% if generalNews %}
+        <div style="text-align: center; font-family: Arial; font-size: xx-large"> GENERAL </div>
+        <div id="general" class="row">
+            <div class="container">
+                <div class="container-fluid">
+                    <ul>{% for news in generalNews %}
+                        <div class="card col-md-4" style="float:left;padding:5px;overflow:auto;margin-bottom:2px;height:500px">
+                            <a href = "{{ news.url }}">
+                                <div class="row no-gutters">
+                                    <div>
+                                      <img src="{{ news.urlToImage }}" style="height: 100%; width:100%" alt="{{ news.title }}">
+                                    </div>
+                                      <div class="card-body">
+                                          <a href="{{ news.url }}">
+                                            <h5 class="card-title">{{ news.title }}</h5>
+                                          </a>
+                                        <p class="card-text">{{ news.description }}</p>
+                                        <p class="card-text"><small class="text-muted">{{ news.source.name }}</small></p>
+                                        {% if news.publishedDate %}
+                                          <p class="card-text"><small class="text-muted">{{ news.publishedDate }}</small></p>
+                                        {%  endif %}
+                                      </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    </ul>
+                <h5 style="float:right;"><a style="color:black;" href="{% url 'general' %}">For More General News>></a></h5>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if businessNews %}
+        <div style="text-align: center; font-family: Arial; font-size: xx-large"> BUSINESS </div>
+        <div id="business" class="row">
+            <div class="container">
+                <div class="container-fluid">
+                    <ul>{% for news in businessNews %}
+                        <div class="card col-md-4" style="float:left;padding:5px;overflow:auto;margin-bottom:2px;height:500px">
+                            <a href = "{{ news.url }}">
+                                <div class="row no-gutters">
+                                    <div>
+                                      <img src="{{ news.urlToImage }}" style="height: 100%; width:100%" alt="{{ news.title }}">
+                                    </div>
+                                      <div class="card-body">
+                                          <a href="{{ news.url }}">
+                                            <h5 class="card-title">{{ news.title }}</h5>
+                                          </a>
+                                        <p class="card-text">{{ news.description }}</p>
+                                        <p class="card-text"><small class="text-muted">{{ news.source.name }}</small></p>
+                                        {% if news.publishedDate %}
+                                          <p class="card-text"><small class="text-muted">{{ news.publishedDate }}</small></p>
+                                        {%  endif %}
+                                      </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    </ul>
+                <h5 style="float:right;"><a style="color:black;" href="{% url 'general' %}">For More Business News>></a></h5>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if sportNews %}
+        <div style="text-align: center; font-family: Arial; font-size: xx-large"> SPORTS </div>
+        <div id="sports" class="row">
+            <div class="container">
+                <div class="container-fluid">
+                    <ul>{% for news in sportsNews %}
+                        <div class="card col-md-4" style="float:left;padding:5px;overflow:auto;margin-bottom:2px;height:500px">
+                            <a href = "{{ news.url }}">
+                                <div class="row no-gutters">
+                                    <div>
+                                      <img src="{{ news.urlToImage }}" style="height: 100%; width:100%" alt="{{ news.title }}">
+                                    </div>
+                                      <div class="card-body">
+                                          <a href="{{ news.url }}">
+                                            <h5 class="card-title">{{ news.title }}</h5>
+                                          </a>
+                                        <p class="card-text">{{ news.description }}</p>
+                                        <p class="card-text"><small class="text-muted">{{ news.source.name }}</small></p>
+                                        {% if news.publishedDate %}
+                                          <p class="card-text"><small class="text-muted">{{ news.publishedDate }}</small></p>
+                                        {%  endif %}
+                                      </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    </ul>
+                <h5 style="float:right;"><a style="color:black;" href="{% url 'general' %}">For More Sports News>></a></h5>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if entertainmentNews %}
+        <div style="text-align: center; font-family: Arial; font-size: xx-large"> ENTERTAINMENT </div>
+        <div id="entertainment" class="row">
+            <div class="container">
+                <div class="container-fluid">
+                    <ul>{% for news in entertainmentNews %}
+                        <div class="card col-md-4" style="float:left;padding:5px;overflow:auto;margin-bottom:2px;height:500px">
+                            <a href = "{{ news.url }}">
+                                <div class="row no-gutters">
+                                    <div>
+                                      <img src="{{ news.urlToImage }}" style="height: 100%; width:100%" alt="{{ news.title }}">
+                                    </div>
+                                      <div class="card-body">
+                                          <a href="{{ news.url }}">
+                                            <h5 class="card-title">{{ news.title }}</h5>
+                                          </a>
+                                        <p class="card-text">{{ news.description }}</p>
+                                        <p class="card-text"><small class="text-muted">{{ news.source.name }}</small></p>
+                                        {% if news.publishedDate %}
+                                          <p class="card-text"><small class="text-muted">{{ news.publishedDate }}</small></p>
+                                        {%  endif %}
+                                      </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    </ul>
+                <h5 style="float:right;"><a style="color:black;" href="{% url 'general' %}">For More Entertainment News>></a></h5>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if scienceAndNatureNews %}
+        <div style="text-align: center; font-family: Arial; font-size: xx-large"> SCIENCE AND NATURE </div>
+        <div id="science-and-nature" class="row">
+            <div class="container">
+                <div class="container-fluid">
+                    <ul>{% for news in scienceAndNatureNews %}
+                        <div class="card col-md-4" style="float:left;padding:5px;overflow:auto;margin-bottom:2px;height:500px">
+                            <a href = "{{ news.url }}">
+                                <div class="row no-gutters">
+                                    <div>
+                                      <img src="{{ news.urlToImage }}" style="height: 100%; width:100%" alt="{{ news.title }}">
+                                    </div>
+                                      <div class="card-body">
+                                          <a href="{{ news.url }}">
+                                            <h5 class="card-title">{{ news.title }}</h5>
+                                          </a>
+                                        <p class="card-text">{{ news.description }}</p>
+                                        <p class="card-text"><small class="text-muted">{{ news.source.name }}</small></p>
+                                        {% if news.publishedDate %}
+                                          <p class="card-text"><small class="text-muted">{{ news.publishedDate }}</small></p>
+                                        {%  endif %}
+                                      </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    </ul>
+                <h5 style="float:right;"><a style="color:black;" href="{% url 'general' %}">For More Science & Entertainment News>></a></h5>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if technologyNews %}
+        <div style="text-align: center; font-family: Arial; font-size: xx-large"> TECHNOLOGY </div>
+        <div id="technology" class="row">
+            <div class="container">
+                <div class="container-fluid">
+                    <ul>{% for news in technologyNews %}
+                        <div class="card col-md-4" style="float:left;padding:5px;overflow:auto;margin-bottom:2px;height:500px">
+                            <a href = "{{ news.url }}">
+                                <div class="row no-gutters">
+                                    <div>
+                                      <img src="{{ news.urlToImage }}" style="height: 100%; width:100%" alt="{{ news.title }}">
+                                    </div>
+                                      <div class="card-body">
+                                          <a href="{{ news.url }}">
+                                            <h5 class="card-title">{{ news.title }}</h5>
+                                          </a>
+                                        <p class="card-text">{{ news.description }}</p>
+                                        <p class="card-text"><small class="text-muted">{{ news.source.name }}</small></p>
+                                        {% if news.publishedDate %}
+                                          <p class="card-text"><small class="text-muted">{{ news.publishedDate }}</small></p>
+                                        {%  endif %}
+                                      </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                    </ul>
+                <h5 style="float:right;"><a style="color:black;" href="{% url 'general' %}">For More Technology News>></a></h5>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+<br>
+</body>
+<footer class="page-footer font-small bg-danger">
+  <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright:
+    <a href="https://google.com/" style="color:white;"> ByteCoders</a>
+  </div>
+</footer>
+</html>

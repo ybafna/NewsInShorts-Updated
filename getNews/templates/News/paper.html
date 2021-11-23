@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paper</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'getNews/style1.css' %}" type="text/css"/>
+</head>
+{% load static %}
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">NewsInShorts</a>
+    <form class="form-inline" action="{% url 'search' %}" method="post">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" placeholder="Search here.." aria-label="Search" name="keyword">
+        <button class="btn btn-outline-inverse my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<br>
+<div class = "row">
+    <div class="col-sm-12" style ="text-align: center; font-family: Arial; font-size: xxx-large"> {{ paperName }} </div>
+
+        {% if paperNews %}
+            <div class="container">
+                <div class="wrapper">
+                <div id="container">
+                    <div id="content">
+                        <div style="width:900px;margin:0px auto;">
+                            <div id="captioned-gallery">
+                                <figure class="slider">
+                                    <figure id="1">
+                                        <a href="{{ paperNews.0.url }}">
+                                            <img src="{{ paperNews.0.urlToImage }}" alt=""/>
+                                        </a>
+                                        <figcaption>{{ paperNews.0.title }}</figcaption>
+                                    </figure>
+                                    <figure id="2">
+                                        <a href="{{ paperNews.1.url }}">
+                                            <img src="{{ paperNews.1.urlToImage }}" alt=""/>
+                                        </a>
+                                        <figcaption>{{ paperNews.1.title }}</figcaption>
+                                    </figure>
+                                    <figure id="3">
+                                        <a href="{{ paperNews.2.url }}">
+                                            <img src="{{ paperNews.2.urlToImage }}" alt=""/>
+                                        </a>
+                                        <figcaption>{{ paperNews.2.title }}</figcaption>
+                                    </figure>
+                                    <figure id="4">
+                                        <a href="{{ paperNews.3.url }}">
+                                            <img src="{{ paperNews.3.urlToImage }}" alt=""/>
+                                        </a>
+                                        <figcaption>{{ paperNews.3.title }}</figcaption>
+                                    </figure>
+                                    <figure id="5">
+                                        <a href="{{ paperNews.4.url }}">
+                                            <img src="{{ paperNews.4.urlToImage }}" alt=""/>
+                                        </a>
+                                        <figcaption>{{ paperNews.4.title }}</figcaption>
+                                    </figure>
+                                </figure>
+                            </div>
+
+
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <br>
+            <div class = "col-sm-12" style ="text-align: center; font-family: Arial; font-size: xxx-large"> ALL NEWS </div>
+            <div class="container">
+            <div class="container-fluid">
+                <ul>{% for news in paperNews %}
+                    <div class="card col-md-4" style="float:left;padding:5px;overflow:auto;margin-bottom:2px;height:500px">
+                        <a href = "{{ news.url }}">
+                            <div class="row no-gutters">
+                                <div>
+                                  <img src="{{ news.urlToImage }}" style="height: 100%; width:100%" alt="{{ news.title }}">
+                                </div>
+                                  <div class="card-body">
+                                      <a href="{{ news.url }}">
+                                        <h5 class="card-title">{{ news.title }}</h5>
+                                      </a>
+                                    <p class="card-text">{{ news.description }}</p>
+        {#                            <p class="card-text"><small class="text-muted">{{ news.source.name }}</small></p>#}
+                                    {% if news.publishedDate %}
+                                      <p class="card-text"><small class="text-muted">{{ news.publishedDate }}</small></p>
+                                    {%  endif %}
+                                  </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% else %}
+            <div style ="text-align: center; font-family: Arial; font-size: large"> No news to show at this moment... </div>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+<footer class="page-footer font-small bg-danger">
+  <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright:
+    <a href="https://google.com/" style="color:white;"> ByteCoders</a>
+  </div>
+</footer>
+</html>
