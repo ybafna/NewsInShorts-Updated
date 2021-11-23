@@ -9,7 +9,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'index' %}">NewsInShorts</a>
-
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'trending' %}">Trending</a>
+      </li>
+    </ul>
+  </div>
       <form class="form-inline" action="{% url 'search' %}" method="post">
         {% csrf_token %}
         <input class="form-control mr-sm-2" type="search" placeholder="Search here.." aria-label="Search" name="keyword">
@@ -52,8 +61,8 @@
 {% endif %}
 </body>
 <footer class="page-footer font-small bg-danger">
-  <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright:
-    <a href="https://google.com/" style="color:white;"> ByteCoders</a>
+  <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright: ByteCoders. Powered by
+    <a href="https://newsapi.org" style="color:white;">@NewsApi.org</a>
   </div>
 </footer>
 

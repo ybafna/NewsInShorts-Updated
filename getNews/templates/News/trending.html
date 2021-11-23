@@ -40,11 +40,11 @@
     <button class="btn btn-outline-inverse my-2 my-sm-0" type="submit">Search</button>
   </form>
 </nav>
-
+<br>
 <div class="container">
     {% if generalNews %}
-        <div style="text-align: center; font-family: Arial; font-size: xx-large"> GENERAL </div>
-        <div id="general" class="row">
+        <div id="general" style="text-align: center; font-family: Arial; font-size: xx-large"> GENERAL </div>
+        <div class="row">
             <div class="container">
                 <div class="container-fluid">
                     <ul>{% for news in generalNews %}
@@ -75,8 +75,8 @@
         </div>
     {% endif %}
     {% if businessNews %}
-        <div style="text-align: center; font-family: Arial; font-size: xx-large"> BUSINESS </div>
-        <div id="business" class="row">
+        <div id="business" style="text-align: center; font-family: Arial; font-size: xx-large"> BUSINESS </div>
+        <div class="row">
             <div class="container">
                 <div class="container-fluid">
                     <ul>{% for news in businessNews %}
@@ -107,8 +107,8 @@
         </div>
     {% endif %}
     {% if sportNews %}
-        <div style="text-align: center; font-family: Arial; font-size: xx-large"> SPORTS </div>
-        <div id="sports" class="row">
+        <div id="sports" style="text-align: center; font-family: Arial; font-size: xx-large"> SPORTS </div>
+        <div class="row">
             <div class="container">
                 <div class="container-fluid">
                     <ul>{% for news in sportsNews %}
@@ -139,8 +139,8 @@
         </div>
     {% endif %}
     {% if entertainmentNews %}
-        <div style="text-align: center; font-family: Arial; font-size: xx-large"> ENTERTAINMENT </div>
-        <div id="entertainment" class="row">
+        <div id="entertainment" style="text-align: center; font-family: Arial; font-size: xx-large"> ENTERTAINMENT </div>
+        <div class="row">
             <div class="container">
                 <div class="container-fluid">
                     <ul>{% for news in entertainmentNews %}
@@ -171,8 +171,8 @@
         </div>
     {% endif %}
     {% if scienceAndNatureNews %}
-        <div style="text-align: center; font-family: Arial; font-size: xx-large"> SCIENCE AND NATURE </div>
-        <div id="science-and-nature" class="row">
+        <div id="science-and-nature" style="text-align: center; font-family: Arial; font-size: xx-large"> SCIENCE AND NATURE </div>
+        <div class="row">
             <div class="container">
                 <div class="container-fluid">
                     <ul>{% for news in scienceAndNatureNews %}
@@ -203,8 +203,8 @@
         </div>
     {% endif %}
     {% if technologyNews %}
-        <div style="text-align: center; font-family: Arial; font-size: xx-large"> TECHNOLOGY </div>
-        <div id="technology" class="row">
+        <div id="technology" style="text-align: center; font-family: Arial; font-size: xx-large"> TECHNOLOGY </div>
+        <div class="row">
             <div class="container">
                 <div class="container-fluid">
                     <ul>{% for news in technologyNews %}
@@ -238,8 +238,8 @@
 <br>
 </body>
 <footer class="page-footer font-small bg-danger">
-  <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright:
-    <a href="https://google.com/" style="color:white;"> ByteCoders</a>
+  <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright: ByteCoders. Powered by
+    <a href="https://newsapi.org" style="color:white;">@NewsApi.org</a>
   </div>
 </footer>
 </html>
