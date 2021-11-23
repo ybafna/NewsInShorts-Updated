@@ -22,60 +22,54 @@
   </div>
 </nav>
 <br>
+<div class="col-sm-12" style ="text-align: center; font-family: Arial; font-size: xxx-large"> {{ paperName }} </div>
+{% if paperNews %}
 <div class = "row">
-    <div class="col-sm-12" style ="text-align: center; font-family: Arial; font-size: xxx-large"> {{ paperName }} </div>
-
-        {% if paperNews %}
-            <div class="container">
-                <div class="wrapper">
-                <div id="container">
-                    <div id="content">
-                        <div style="width:900px;margin:0px auto;">
-                            <div id="captioned-gallery">
-                                <figure class="slider">
-                                    <figure id="1">
-                                        <a href="{{ paperNews.0.url }}">
-                                            <img src="{{ paperNews.0.urlToImage }}" alt=""/>
-                                        </a>
-                                        <figcaption>{{ paperNews.0.title }}</figcaption>
-                                    </figure>
-                                    <figure id="2">
-                                        <a href="{{ paperNews.1.url }}">
-                                            <img src="{{ paperNews.1.urlToImage }}" alt=""/>
-                                        </a>
-                                        <figcaption>{{ paperNews.1.title }}</figcaption>
-                                    </figure>
-                                    <figure id="3">
-                                        <a href="{{ paperNews.2.url }}">
-                                            <img src="{{ paperNews.2.urlToImage }}" alt=""/>
-                                        </a>
-                                        <figcaption>{{ paperNews.2.title }}</figcaption>
-                                    </figure>
-                                    <figure id="4">
-                                        <a href="{{ paperNews.3.url }}">
-                                            <img src="{{ paperNews.3.urlToImage }}" alt=""/>
-                                        </a>
-                                        <figcaption>{{ paperNews.3.title }}</figcaption>
-                                    </figure>
-                                    <figure id="5">
-                                        <a href="{{ paperNews.4.url }}">
-                                            <img src="{{ paperNews.4.urlToImage }}" alt=""/>
-                                        </a>
-                                        <figcaption>{{ paperNews.4.title }}</figcaption>
-                                    </figure>
-                                </figure>
-                            </div>
-
-
-                        </div>
-                        <div style="clear:both;"></div>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="col-sm-8" style="max-width:100%">
+            <div id="captioned-gallery">
+                <figure class="slider">
+                    <figure id="1">
+                        <a href="{{ paperNews.0.url }}">
+                            <img src="{{ paperNews.0.urlToImage }}" alt=""/>
+                        </a>
+                        <figcaption>{{ paperNews.0.title }}</figcaption>
+                    </figure>
+                    <figure id="2">
+                        <a href="{{ paperNews.1.url }}">
+                            <img src="{{ paperNews.1.urlToImage }}" alt=""/>
+                        </a>
+                        <figcaption>{{ paperNews.1.title }}</figcaption>
+                    </figure>
+                    <figure id="3">
+                        <a href="{{ paperNews.2.url }}">
+                            <img src="{{ paperNews.2.urlToImage }}" alt=""/>
+                        </a>
+                        <figcaption>{{ paperNews.2.title }}</figcaption>
+                    </figure>
+                    <figure id="4">
+                        <a href="{{ paperNews.3.url }}">
+                            <img src="{{ paperNews.3.urlToImage }}" alt=""/>
+                        </a>
+                        <figcaption>{{ paperNews.3.title }}</figcaption>
+                    </figure>
+                    <figure id="5">
+                        <a href="{{ paperNews.4.url }}">
+                            <img src="{{ paperNews.4.urlToImage }}" alt=""/>
+                        </a>
+                        <figcaption>{{ paperNews.4.title }}</figcaption>
+                    </figure>
+                </figure>
             </div>
-            </div>
-            <br>
-            <div class = "col-sm-12" style ="text-align: center; font-family: Arial; font-size: xxx-large"> ALL NEWS </div>
-            <div class="container">
+
+
+        </div>
+        <div style="clear:both;"></div>
+
+    </div>
+    <br>
+    <div class = "col-sm-12" style ="text-align: center; font-family: Arial; font-size: xxx-large"> ALL NEWS </div>
+    <div class="container">
             <div class="container-fluid">
                 <ul>{% for news in paperNews %}
                     <div class="card col-md-4" style="float:left;padding:5px;overflow:auto;margin-bottom:2px;height:500px">
@@ -101,16 +95,17 @@
                 </ul>
             </div>
         </div>
-        {% else %}
-            <div style ="text-align: center; font-family: Arial; font-size: large"> No news to show at this moment... </div>
-        {% endif %}
     </div>
-</div>
+{% else %}
+    <div style ="text-align: center; font-family: Arial; font-size: large"> No news to show at this moment... </div>
+{% endif %}
 
 </body>
+<br>
+<br>
 <footer class="page-footer font-small bg-danger">
-  <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright:
-    <a href="https://google.com/" style="color:white;"> ByteCoders</a>
+  <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright: ByteCoders. Powered by
+    <a href="https://newsapi.org" style="color:white;">NewsApi</a>
   </div>
 </footer>
 </html>
