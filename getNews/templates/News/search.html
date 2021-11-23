@@ -27,7 +27,6 @@
     </div>
   </div>
 </nav>
-
 <div style ="text-align: center; font-family: Arial; font-size: xxx-large"> News related to : {{ keyword }} </div>
 
 {% if keywordNews %}
@@ -57,14 +56,14 @@
         </ul>
     </div>
 </div>
-
+{% else %}
+    <div style ="text-align: center; font-family: Arial; font-size: large"> No news to show at this moment... </div>
 {% endif %}
-</body>
-<footer class="page-footer font-small bg-danger">
+
+<footer class="page-footer font-small bg-danger fixed-bottom">
   <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright: ByteCoders. Powered by
     <a href="https://newsapi.org" style="color:white;">@NewsApi.org</a>
   </div>
 </footer>
-
-
+</body>
 </html>
