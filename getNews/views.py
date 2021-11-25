@@ -105,13 +105,6 @@ def get_source():
 def category(request):
     url = request.get_full_path()
     urls = url.split('/')
-    # if request.user.is_authenticated:
-        # u = UserProfile.objects.get(user=request.user)
-        # at = getattr(u, urls[2])
-        # at = at + 1
-        # setattr(u, urls[2], at)
-        # u.save()
-
     category_news = get_category_news(urls[2])
     context = {
         'paperNews': category_news,
@@ -160,19 +153,3 @@ def search(request):
     }
 
     return render(request, 'News/search.html', context)
-
-
-# Check if the user is logged in or not
-# def login_check(request):
-#     all_news = News.objects.all()
-#     all_source = Source.objects.all()
-#     if request.user.is_authenticated:
-#         u = UserProfile.objects.get(user=request.user)
-#         if ((u.sport == 0 and u.general == 0) and (u.business == 0 and u.technology == 0)) and (
-#                 u.science_nature == 0 and u.entertainment == 0):
-#             return render(request, 'getNews/homePage.html', {'allNews': all_news, 'allSource': all_source})
-#         else:
-#             categories = {'sport': u.sport, 'general': u.general, 'business': u.business, 'technology': u.technology,
-#                           'science_nature': u.science_nature, 'entertainment': u.entertainment}
-#             large = max(list, key=categories.get)
-#             return redirect(large)
