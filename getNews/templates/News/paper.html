@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Paper</title>
-    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% load static %}
     <link rel="stylesheet" href="{% static 'getNews/css/style.css' %}" type="text/css"/>
 </head>
 {% load static %}
@@ -93,7 +95,6 @@
                                         <h5 class="card-title">{{ news.title }}</h5>
                                       </a>
                                     <p class="card-text">{{ news.description }}</p>
-        {#                            <p class="card-text"><small class="text-muted">{{ news.source.name }}</small></p>#}
                                     {% if news.publishedDate %}
                                       <p class="card-text"><small class="text-muted">{{ news.publishedDate }}</small></p>
                                     {%  endif %}
