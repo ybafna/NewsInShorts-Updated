@@ -1,16 +1,16 @@
+# Create your views here.
 import requests
 import datetime
 from django.shortcuts import render
-
-# Create your views here.
+from decouple import config
 from getNews.models import News, Source
 
+API_KEY = config('API_KEY')
 
 def index(request):
     # get_source()
     # get_all_news()
     all_news = News.objects.all()
-    print(all_news)
     all_sources = Source.objects.all()
     return render(request, 'News/homePage.html', {'allNews': all_news, 'allSource': all_sources})
 
@@ -22,7 +22,7 @@ def get_all_news():
     for source in sources:
         articles = []
         try:
-            url = 'https://newsapi.org/v1/articles?source='+source.source_id+'&apiKey=395c9ded48d34f04b6a2fc809d232bc3'
+            url = 'https://newsapi.org/v1/articles?source='+source.source_id+'&apiKey='+API_KEY
             r = requests.get(url)
             articles = r.json()['articles']
         except:

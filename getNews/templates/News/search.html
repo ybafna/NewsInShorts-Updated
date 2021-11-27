@@ -19,7 +19,7 @@
       </li>
     </ul>
   </div>
-      <form class="form-inline" action="{% url 'search' %}" method="post">
+      <form autocomplete="off" class="form-inline" action="{% url 'search' %}" method="post">
         {% csrf_token %}
         <input class="form-control mr-sm-2" type="search" placeholder="Search here.." aria-label="Search" name="keyword">
         <button class="btn btn-outline-inverse my-2 my-sm-0" type="submit">Search</button>
@@ -30,6 +30,7 @@
 <div style ="text-align: center; font-family: Arial; font-size: xxx-large"> News related to : {{ keyword }} </div>
 
 {% if keywordNews %}
+<div class="row">
     <div class="container">
     <div class="container-fluid">
         <ul>{% for news in keywordNews %}
@@ -56,9 +57,11 @@
         </ul>
     </div>
 </div>
+</div>
 {% else %}
     <div style ="text-align: center; font-family: Arial; font-size: large"> No news to show at this moment... </div>
 {% endif %}
+
 <br>
 <br>
 <br>
