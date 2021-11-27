@@ -7,6 +7,7 @@ from getNews.models import News, Source
 
 API_KEY = config('API_KEY')
 
+
 def index(request):
     # get_source()
     # get_all_news()
@@ -22,7 +23,7 @@ def get_all_news():
     for source in sources:
         articles = []
         try:
-            url = 'https://newsapi.org/v1/articles?source='+source.source_id+'&apiKey='+API_KEY
+            url = 'https://newsapi.org/v1/articles?source=' + source.source_id + '&apiKey=' + API_KEY
             r = requests.get(url)
             articles = r.json()['articles']
         except:
@@ -109,7 +110,7 @@ def category(request):
     context = {
         'paperNews': category_news,
         'paperNewsTop': category_news[0:6],
-        'paperName' : urls[2].upper()
+        'paperName': urls[2].upper()
     }
     return render(request, 'News/paper.html', context)
 
